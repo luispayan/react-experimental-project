@@ -5,11 +5,12 @@
 #root {
   padding: 0;
   margin: 0;
-  min-height: 100vh;
+  height: 100%;
   width: 100%;
   max-width: none;
 }
 
 .header {
   background-color: #641c24;
+  height: 10vh;
 }

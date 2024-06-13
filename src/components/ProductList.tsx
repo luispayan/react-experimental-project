@@ -31,15 +31,16 @@ const App = () => {
 
   return (
     <>
-        <Typography className='!font-bold !text-2xl pt-4'>
+        <Typography className='!font-bold !text-2xl pt-4 text-center'>
             Products List
         </Typography>
+        <button className='bg-green-500 hover:bg-green-700 text-white px-4 py-2 rounded-lg float-right mr-16 mb-4'>Add</button>
         <TableContainer component={Paper} className='px-16 mt-4 !shadow-none'>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead className='bg-red-300'>
             <TableRow>
                 {headers.map((header) => (
-                    <TableCell className='!font-bold !text-lg'>{header}</TableCell>
+                    <TableCell key={header} className='!font-bold !text-lg'>{header}</TableCell>
                 ))}
             </TableRow>
             </TableHead>
@@ -55,8 +56,8 @@ const App = () => {
                     <TableCell align="left">{row.name}</TableCell>
                     <TableCell align="left">{row.inventory}</TableCell>
                     <TableCell align="left">
-                        <button className='bg-green-500 text-white px-4 py-2 rounded-lg mx-2'>Edit</button>
-                        <button className='bg-red-500 text-white px-4 py-2 rounded-lg'>Delete</button>
+                        <button className='bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded-lg mx-2'>Edit</button>
+                        <button className='bg-red-500 hover:bg-red-700 text-white px-4 py-2 rounded-lg'>Delete</button>
                     </TableCell>
                 </TableRow>
             ))}
