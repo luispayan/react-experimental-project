@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { login, register } from '../services/api';
-import { Button, Grid, TextField, Typography } from '@mui/material';
+import * as Form from '@radix-ui/react-form';
 import Logo from '../assets/logo.png';
 import '../styles/UserForm.css';
 
@@ -23,44 +23,46 @@ const LoginForm = ({ type = 'login' }) => {
 
     return (
         <div className='login-form w-12/12 flex align-middle justify-center'>
-            <Grid container justifyContent="center" alignItems="center">
-                <Grid item xs={10} sm={6} md={4} lg={3} className="!w-6/12 mx-auto h-fit bg-white p-4">
-                    <form onSubmit={handleSubmit}>
-                        <img src={Logo} alt="Logo" className="h-20 mx-auto" align="center" gutterBottom/>
-                        <TextField
-                            label="Username"
-                            variant="outlined"
-                            margin="normal"
-                            fullWidth
-                            required
-                            className='!w8/12'
+            <Form.Root onSubmit={handleSubmit} className="FormRoot self-center !w-3/12 mx-auto h-fit bg-white p-4">
+                <img src={Logo} alt="Logo" className="h-20 mx-auto" align="center"/>
+                <Form.Field className="FormField" name="email">
+                    <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
+                        <Form.Label className="FormLabel text-black">Username</Form.Label>
+                        <Form.Message className="FormMessage text-red-500" match="valueMissing">
+                            Please enter your username
+                        </Form.Message>
+                    </div>
+                    <Form.Control asChild>
+                        <input
+                            className="Input bg-white text-black"
                             onChange={(e) => setUsername(e.target.value)}
-                            autoFocus
-                        />
-                        <TextField
-                            type="password"
-                            label="Password"
-                            variant="outlined"
-                            margin="normal"
-                            onChange={(e) => setPassword(e.target.value)}
-                            fullWidth
+                            type="text"
                             required
-                            className='!w8/12'
                         />
-                        <Button
-                            type="submit"
-                            variant="contained"
-                            color="error"
-                            fullWidth
-                            size="large"
-                            className='!w8/12'
-                            style={{ marginTop: '1rem' }}
-                            >
-                            {action}
-                        </Button>
-                    </form>
-                </Grid>
-            </Grid>
+                    </Form.Control>
+                </Form.Field>
+                <Form.Field className="FormField" name="question">
+                    <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between' }}>
+                        <Form.Label className="FormLabel text-black">Password</Form.Label>
+                        <Form.Message className="FormMessage text-red-500" match="valueMissing">
+                            Please enter your password
+                        </Form.Message>
+                    </div>
+                    <Form.Control asChild>
+                        <input
+                            type="password"
+                            className='Input bg-white text-black'
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                    </Form.Control>
+                </Form.Field>
+                <Form.Submit asChild>
+                    <button className="Button bg-red-500 hover:bg-red-700 text-white" style={{ marginTop: 10 }}>
+                        {action}
+                    </button>
+                </Form.Submit>
+            </Form.Root>
         </div>
     );
 };

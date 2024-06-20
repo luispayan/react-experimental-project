@@ -21,7 +21,7 @@ function Header() {
   }
 
   return (
-    <header className="header flex justify-between items-center px-10">
+    <header className="header flex justify-between items-center p-10 !bg-red-900">
       <div className="flex items-center">
         <img src={Logo} alt="Logo" className="h-20 mr-3"/>
         <h1 className="text-2xl text-white">Inventory Control</h1>
